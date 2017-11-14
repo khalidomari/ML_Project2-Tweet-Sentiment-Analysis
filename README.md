@@ -1,18 +1,34 @@
 # Tweet Sentiment Analysis
 Project 2 for the Machine Learning Course (Fall 2017)
 
-One Paragraph of project description goes here
+## Project description
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+The task of this competition is to predict if a tweet message used to contain a positive :) or negative :( smiley, by considering only the remaining text.
 
 ### Prerequisites
 
 What things you need to install the software and how to install them
 
 ```
+nltk
+```
+```
 Give examples
+```
+
+### Preprocessing
+
+A file is preprocessed using ```preprocessing.py```: it performs the following cleanings:
+<details>
+  <h3>Replace negative verbs</h3>
+  <h3>Replace smiley and slangs</h3>
+  <h3>Remove punctuation</h3>
+  <h3>Segmentation</h3>
+  <h3>correct char repetiotions</h3>
+  <h3>correct char repetiotions</h3>
+</details>
+```
+python preprocessing.py file1 file2 ....
 ```
 
 ### Installing
