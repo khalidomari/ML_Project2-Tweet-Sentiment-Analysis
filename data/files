@@ -10,3 +10,6 @@ http://searchcrm.techtarget.com/definition/Twitter-chat-and-text-messaging-abbre
 
 Spell checker
 http://norvig.com/spell-correct.html
+
+stop words:
+nltk stopwords modified manualy, add common words (user, )

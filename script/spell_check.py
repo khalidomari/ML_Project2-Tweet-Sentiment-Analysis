@@ -28,12 +28,20 @@ def words(text): return re.findall(r'\w+', text.lower())
 
 dictionary = Counter(words(open('../data/english_words.txt').read()))
 
+i = 1
+for key in list(dictionary.keys())[::-1]:
+    dictionary[key] = i
+    i += 1
+
 def P(word, N=sum(dictionary.values())): 
     "Probability of `word`."
     return dictionary[word] / N
 
 def separate(words):
-    return segment(words)
+    return ' '.join(word for word in segment(words))
+
+def est_check(word):
+    return len(word)>4 and word[-3:]=='est' and word[:-3] in dictionary
 
 def correction(word): 
     #load()
@@ -49,15 +57,17 @@ def correction(word):
     if word in dictionary:
         return word
     else:
-        segments = separate(word)
-        if len(segments) > 1:
-            return ' '.join(word for word in segments)
+        if est_check(word):
+            word = word[:-2]
+        cand_word = max(candidates(word), key=P)
+        if cand_word in dictionary:
+            return cand_word
         else:
-            return max(candidates(word), key=P)
+            return separate(word)
 
 def candidates(word): 
     "Generate possible spelling corrections for word."
-    return (known([word]) or known(edits1(word)) or known(edits2(word)) or [word])
+    return (known(edits1(word)) or known(edits2(word)) or [word])
 
 def known(words): 
     "The subset of `words` that appear in the dictionary of WORDS."
@@ -71,6 +81,7 @@ def edits1(word):
     transposes = [L + R[1] + R[0] + R[2:] for L, R in splits if len(R)>1]
     replaces   = [L + c + R[1:]           for L, R in splits if R for c in letters]
     inserts    = [L + c + R               for L, R in splits for c in letters]
+    #print(set(deletes + transposes + replaces + inserts))
     return set(deletes + transposes + replaces + inserts)
 
 def edits2(word): 
