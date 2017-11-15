@@ -1,0 +1,9 @@
+Preprocessing:
+Steps:
+	- Replace some verbs with the negative form to the form (verb + not)
+	- Replacing remaining smileys with their interpretations
+	- Remove all punctuations
+	- Word Segmentation (Iamhappy ==> I am happy)
+	- Correct the words with consecutive repeated characters (>2 ==> 2)
+	- (Spell check)
+	- Remove all Stopwords
