@@ -13,3 +13,5 @@ Scrapped and corrected from  [NetLingo List of Chat Acronyms & Text Shorthand](h
 ### Smileys and explications:
 
 Scrapped and corrected from  [NetLingo List of Smileys and Emoticons ](http://www.netlingo.com/smileys.php)
+
+### list of english contractions:
