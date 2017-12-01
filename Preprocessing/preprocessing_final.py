@@ -102,11 +102,19 @@ def correct_tweet(tweet, english_dictionary, final_dict):
 		if not found:
 			(new_word, found2) = filter1(word, english_dictionary, final_dict)
 			if not found2:
-				new_word = correct(word, english_dictionary, final_dict)
+				new_word2 = correct(new_word, english_dictionary, final_dict)
+				if new_word2 == new_word and hasDigits(new_word):
+					new_word = ''.join([s for s in new_word if not s.isdigit()])
+					new_word = correct(new_word, english_dictionary, final_dict)
+				else:
+					new_word = new_word2
 		final_dict[word] = new_word
 		new_tokens.append(new_word)
 	new_tweet = ' '.join(new_tokens)
 	return new_tweet, final_dict
+
+def hasDigits(word):
+	return any(char.isdigit() for char in word)
 
 def check_word(word, english_dictionary, final_dict):
 	treshold = 1
@@ -120,9 +128,10 @@ def check_word(word, english_dictionary, final_dict):
 	
 def filter1(word, english_dictionary, final_dict):
 	'''remove punctuations/ char correction'''
-	new_word = ''.join([s for s in word if s not in set(string.punctuation) and not s.isdigit()])
-	new_word = correct_char_repetition(new_word)
-	return check_word(new_word, english_dictionary, final_dict)
+	new_word_ = correct_char_repetition(word)
+	new_word_ = ''.join([s for s in word if s not in set(string.punctuation) and not s.isdigit()])
+	
+	return check_word(new_word_, english_dictionary, final_dict)
 
 def correct(word, english_dictionary, final_dict):
 	(new_c, truth_c) = check_word(word, english_dictionary, final_dict)
