@@ -4,4 +4,4 @@
 Containing 'english words', 'english contractions', 'smileys' and 'acronyms explications'.
 
 ### Correct tweets:
-![tweet Correction](https://raw.githubusercontent.com/khalidomari/ML_Project2-Tweet-Sentiment-Analysis/blob/master/Preprocessing/preprocessing.png)
+![Alt text](https://github.com/khalidomari/ML_Project2-Tweet-Sentiment-Analysis/blob/master/Preprocessing/preprocessing.png?raw=true)
