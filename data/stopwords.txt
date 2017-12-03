@@ -135,4 +135,3 @@ rt
 u
 x
 tomorrow
-twitter

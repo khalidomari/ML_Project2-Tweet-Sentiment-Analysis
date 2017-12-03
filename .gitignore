@@ -5,3 +5,9 @@ Preprocessing/dumped_files/corrected_datasets_pos_neg_test.p
 Preprocessing/data/train_neg_full.txt
 Preprocessing/data/train_pos_full.txt
 Preprocessing/dumped_files/dumped_files.zip
+Preprocessing/train_Xy_splited_word2Vec0.05.p
+Preprocessing/train_test_word2Vec.p
+Preprocessing/train_test_splited_word2Vec0.05.p
+Preprocessing/word2vec_model_noStWords.p
+Experiments/train_test_splited_word2Vec0.05.p
+Experiments/corrected_datasets_pos_neg_test.p
