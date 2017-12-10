@@ -154,7 +154,7 @@ def main():
 	if len(sys.argv) != 4:
 		print('ERROR:: 3 parameters are required \n>>>> 1: train_pos \n>>>> 2: train_neg \n>>>> 3: test')
 	else:
-		data_path = 'data/'
+		data_path = '../data/'
 		print(data_path + sys.argv[1])
 		pos = load_file(data_path + sys.argv[1])
 		neg = load_file(data_path + sys.argv[2])
@@ -179,9 +179,10 @@ def main():
 			print('Dictionaray length = ', len(final_dict))
 
 		# Store the final dict
-		pickle.dump(final_dict, open( "dumped_files/final_tokens_dictionary.p", "wb" ))
-		pickle.dump(new_data, open( "dumped_files/corrected_datasets_pos_neg_test.p", "wb" ))
-		print('Finished .... data stored in ./dumped_files :::: total time: ', time.time()-tf)
+		BASE = '../data/corrected_data/'
+		pickle.dump(final_dict, open( BASE + "final_tokens_dictionary.p", "wb" ))
+		pickle.dump(new_data, open( BASE + "corrected_datasets_pos_neg_test.p", "wb" ))
+		print('Finished .... data stored in {} :::: total time: {}'.format(BASE, time.time()-tf))
 
 if __name__ == "__main__":
 	main()

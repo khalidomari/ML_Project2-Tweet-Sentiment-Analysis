@@ -1,13 +1,17 @@
 
+data/corrected_data/corrected_datasets_pos_neg_test.p
+data/corrected_data/corrected_datasets_stopwords_pos_neg_test.p
+data/embeddings/glove/train_test_splited_glove_data.200d.p
 data/train_pos_full.txt
+data/train_pos_full.txt
+embeddings/glove/glove.twitter.27B/glove.twitter.27B.100d.p
+embeddings/glove/glove.twitter.27B/glove.twitter.27B.100d.txt
+embeddings/glove/glove.twitter.27B/glove.twitter.27B.200d.p
+embeddings/glove/glove.twitter.27B/glove.twitter.27B.200d.txt
+embeddings/glove/glove.twitter.27B/glove.twitter.27B.25d.p
+embeddings/glove/glove.twitter.27B/glove.twitter.27B.25d.txt
+embeddings/glove/glove.twitter.27B/glove.twitter.27B.50d.p
+embeddings/glove/glove.twitter.27B/glove.twitter.27B.50d.txt
+embeddings/word2vec/word2vec_model.p
+data/corrected_data/final_tokens_dictionary.p
 data/train_neg_full.txt
-Preprocessing/dumped_files/corrected_datasets_pos_neg_test.p
-Preprocessing/data/train_neg_full.txt
-Preprocessing/data/train_pos_full.txt
-Preprocessing/dumped_files/dumped_files.zip
-Preprocessing/train_Xy_splited_word2Vec0.05.p
-Preprocessing/train_test_word2Vec.p
-Preprocessing/train_test_splited_word2Vec0.05.p
-Preprocessing/word2vec_model_noStWords.p
-Experiments/train_test_splited_word2Vec0.05.p
-Experiments/corrected_datasets_pos_neg_test.p
