@@ -15,3 +15,4 @@ embeddings/glove/glove.twitter.27B/glove.twitter.27B.50d.txt
 embeddings/word2vec/word2vec_model.p
 data/corrected_data/final_tokens_dictionary.p
 data/train_neg_full.txt
+*.p
