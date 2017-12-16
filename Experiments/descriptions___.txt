@@ -1,0 +1,117 @@
+29737302
+1512869714.3156416
+	../data/embeddings/word2vec/train_test_splited_word2Vec0.05.p
+	MLPClassifier(hidden_layer_sizes=(3,3,3), verbose=True) with fitting 
+		Results :::: train accuracy = 94.7 and test accuracy = 68.19918373432229
+1512870207.3192358
+	../data/embeddings/word2vec/train_test_splited_word2Vec0.05.p
+	MLPClassifier(hidden_layer_sizes=(30,30,30), verbose=True) with fitting 
+		Results :::: train accuracy = 79.71099002957288 and test accuracy = 79.28772433328984
+1512871216.6735919
+	../data/embeddings/word2vec/train_test_splited_word2Vec0.05.p
+	MLPClassifier(hidden_layer_sizes=(30,30,30), verbose=True) with fitting 
+		Results :::: train accuracy = 78.40090631329602 and test accuracy = 78.05400771538791
+1512875443.5231972
+	../data/embeddings/word2vec/train_test_splited_word2Vec0.05.p
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 80.42510409361314 and test accuracy = 78.67272964460761
+1512876341.7059693
+	GLOVE
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 76.94614596156015 and test accuracy = 76.85476807245756
+1512937985.5002718
+	GLOVE
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 73.52 and test accuracy = 72.49389664361989
+1512938016.5739958
+	GLOVE
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 73.244 and test accuracy = 72.91787025475689
+1512938058.1108556
+	GLOVE
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 73.069 and test accuracy = 73.01664212899979
+1512938297.03483
+	GLOVE
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 80.48949999999999 and test accuracy = 75.78970908887605
+1512938551.9994426
+	WORD2VEC
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 82.1165 and test accuracy = 77.10542499860229
+1512940435.3520544
+	WORD2VEC
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 84.181 and test accuracy = 74.99021599358915
+1513384438.4157333
+	WORD2VEC
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 100.0 and test accuracy = 68.49829478745411
+1513384479.9831858
+	WORD2VEC
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 100.0 and test accuracy = 70.18300751038969
+1513384557.9308774
+	WORD2VEC
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 99.7 and test accuracy = 69.52794498592966
+1513384623.0387268
+	WORD2VEC
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 100.0 and test accuracy = 70.32557446094783
+1513384738.0131285
+	WORD2VEC
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 99.56 and test accuracy = 74.03231517545984
+1513384984.9879634
+	WORD2VEC
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 99.56 and test accuracy = 74.03231517545984
+1513385451.0233705
+	WORD2VEC
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 99.98 and test accuracy = 72.46966958012635
+1513385521.1518965
+	WORD2VEC
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 99.98 and test accuracy = 72.46966958012635
+1513385582.452367
+	WORD2VEC
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 90.5 and test accuracy = 73.79377178106189
+1513385621.6407146
+	WORD2VEC
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 59.46 and test accuracy = 59.61348515626456
+1513385662.764474
+	WORD2VEC
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 90.5 and test accuracy = 73.79377178106189
+1513385734.5223796
+	WORD2VEC
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 62.4 and test accuracy = 62.18528112711754
+1513385852.8786683
+	WORD2VEC
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 82.4 and test accuracy = 74.42833448256583
+1513386166.0226274
+	WORD2VEC
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 61.91 and test accuracy = 61.04847276318977
+1513386180.3928769
+	WORD2VEC
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 98.99 and test accuracy = 65.41959410350546
+1513386191.9332914
+	WORD2VEC
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 98.99 and test accuracy = 65.41959410350546
+1513386232.9092834
+	WORD2VEC
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 99.054 and test accuracy = 67.47423544978474
+1513386265.4081924
+	WORD2VEC
+	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting 
+		Results :::: train accuracy = 99.054 and test accuracy = 67.47423544978474

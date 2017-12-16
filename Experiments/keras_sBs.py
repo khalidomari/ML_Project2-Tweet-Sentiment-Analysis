@@ -1,28 +1,15 @@
 ###############################################################
 ########################## IMPORTS ############################
 ###############################################################
-from sklearn.neural_network import MLPClassifier
-from sklearn.preprocessing import StandardScaler
-from sklearn.svm import LinearSVC
-from sklearn.linear_model import LogisticRegression
-import numpy as np 
 import pickle
 import time
-import csv
-import keras.backend as K
-import multiprocessing
-import tensorflow as tf
-
-from gensim.models.word2vec import Word2Vec
-
-from keras.callbacks import EarlyStopping
+import numpy as np
 from keras.models import Sequential
-from keras.layers.core import Dense, Dropout, Flatten
-from keras.layers.convolutional import Conv1D
-from keras.optimizers import Adam
-
-from nltk.stem.lancaster import LancasterStemmer
-from nltk.tokenize import RegexpTokenizer
+from keras.layers import Dense
+import numpy as np
+# fix random seed for reproducibility
+np.random.seed(7)
+#from features import dumpFeatures
 
 ###############################################################
 ########################## FUNCTIONS ##########################
@@ -55,18 +42,20 @@ def update_description(lines):
 ############################ MAIN #############################
 ###############################################################
 def main():
-	print('Loading files .... ')
+	print(time.ctime(), '  Loading files .... ')
 	DATA_PATH = '../data/embeddings/'
 	GLOVE    = DATA_PATH + 'glove/train_test_splited_glove_data.200d.p'
 	WORD2VEC = DATA_PATH + 'word2vec/train_test_splited_word2Vec0.05.p'
 
 	EMBD = 'WORD2VEC'
 	[X_train, X_test, y_train, y_test, test_vec] = pickle.load( open(WORD2VEC, 'rb'))
+	max_features = 200
 
 	size = 1000
-	X_train = X_train[:size]
-	y = y_train[:size]
+	X = X_train[:size]
+	Y = y_train[:size]
 
+	"""
 	print('Scaler fitting ...')
 	scaler = StandardScaler()
 	scaler.fit(X_train)
@@ -78,51 +67,53 @@ def main():
 	X = scaler.transform(X_train)
 	print('Scaling the testing set ...')
 	test = scaler.transform(X_test)
+	"""
 
 
-	max_tweet_length = 30
-	vector_size = 200
-	        
-	# Keras convolutional model
-	batch_size = 32
-	nb_epochs = 100
-
+	################## Model ##########################
+	###################################################
+	print(time.ctime(), '  Generating the model .... ')
+	# create model
 	model = Sequential()
+	model.add(Dense(output_dim = size, input_dim=size))
+	model.add(Dense(8, activation='relu'))
+	model.add(Dense(1, activation='sigmoid'))
 
-	model.add(Conv1D(32, kernel_size=3, activation='elu', padding='same', input_shape=(max_tweet_length, vector_size)))
-	model.add(Conv1D(32, kernel_size=3, activation='elu', padding='same'))
-	model.add(Conv1D(32, kernel_size=3, activation='elu', padding='same'))
-	model.add(Conv1D(32, kernel_size=3, activation='elu', padding='same'))
-	model.add(Dropout(0.25))
+	print(time.ctime(), '  Compiling the model .... ')
+	# Compile model
+	model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-	model.add(Conv1D(32, kernel_size=2, activation='elu', padding='same'))
-	model.add(Conv1D(32, kernel_size=2, activation='elu', padding='same'))
-	model.add(Conv1D(32, kernel_size=2, activation='elu', padding='same'))
-	model.add(Conv1D(32, kernel_size=2, activation='elu', padding='same'))
-	model.add(Dropout(0.25))
-
-	model.add(Flatten())
-
-	model.add(Dense(256, activation='tanh'))
-	model.add(Dense(256, activation='tanh'))
-	model.add(Dropout(0.5))
-
-	model.add(Dense(2, activation='softmax'))
-
-	# Compile the model
-	model.compile(loss='categorical_crossentropy',
-	              optimizer=Adam(lr=0.0001, decay=1e-6),
-	              metrics=['accuracy'])
-
+	print(time.ctime(), '  fitting the model .... ')
 	# Fit the model
-	model.fit(X_train, Y_train,
-	          batch_size=batch_size,
-	          shuffle=True,
-	          epochs=nb_epochs,
-	          validation_data=(X_test, Y_test),
-	          callbacks=[EarlyStopping(min_delta=0.00025, patience=2)])
+	model.fit(X, Y, epochs=150, batch_size=10)
+
+	print(time.ctime(), '  evaluating the model .... ')
+	# evaluate the model
+	scores = model.evaluate(X, Y)
+	print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1]*100))
 
 
+	"""print(time.ctime(), '  Predictions .... ')
+				train_1 = model.predict_proba(X_train, batch_size=128)
+				test_1 = model.predict_proba(X_test)
+			
+				train_acc = accuracy(y, train_pred)
+				test_acc = accuracy(y_test, test_pred)
+			
+				results = '  Results :::: train accuracy = {} and test accuracy = {}'.format(train_acc, test_acc)
+				print(time.ctime(), results)"""
+	print('Done')
+
+	"""
+	Dump the results of model 1
+	"""
+
+	#cPickle.dump(train_1, open('features/train/train_conv1_pretrained.dat', 'wb'))
+	#cPickle.dump(test_1, open('features/test/test_conv1_pretrained.dat', 'wb'))
+
+	###################################################
+	###################################################
+	"""
 	print('predictions ...')
 	train_pred = mlp.predict(X)
 	test_pred = mlp.predict(test)
@@ -142,6 +133,7 @@ def main():
 	DESCRIPTION = [str(t), '	' + EMBD,'	MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True) with fitting ', '		' + results]
 	update_description(DESCRIPTION)
 	print('Done')
+	"""
 
 
 if __name__ == "__main__":
