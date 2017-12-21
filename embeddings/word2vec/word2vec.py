@@ -61,8 +61,8 @@ def main():
 	if not load:
 		#Generate word2vec model
 		print('Generating word2vec model ...')
-		size = 150
-		window = 3
+		size = 400
+		window = 6
 		model = gensim.models.Word2Vec(pos + neg + test, size=size, window=window, min_count=1, workers=4)
 
 		#Store w2v model

@@ -18,3 +18,4 @@ data/train_neg_full.txt
 *.p
 *.model
 *.csv
+fasttext/train.txt
