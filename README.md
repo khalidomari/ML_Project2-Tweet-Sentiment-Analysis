@@ -20,6 +20,8 @@ This script generates the best predictions submited on Kaggle, using Fasttext on
 - Generates model
 - Generates and saves prediction
 
+Estimated runtime is around 15 minutes.
+
 ### Other Approaches:
 
 ### Preprocessing
@@ -33,11 +35,15 @@ How to run:
 2) run `initial_dict.py`
 3) run `preprocessing_final.py train_pos.txt train_neg.txt test.txt`
 
+Estimated runtime is around 3 hours if starting from scratch. This reduces significantly if the dictionary is already created.
+
 ### Word Embeddings
 `word2vec.py`: Generates a Word2vec model using the preprocessed tweets. The result is a vector representation of each tweet. <br> 
 `glove_emb.py`: Generate a vector representation of each tweet based on a pre-trained GloVe model.
 
 The resulting files are pickled and saved in the folder: `/data/embeddings`
+
+Estimated runtime is around 5 minutes.
 
 ### Linear Classification
 After the word embeddings have been generated, various linear classifiers can be evaluated.
@@ -46,3 +52,4 @@ After the word embeddings have been generated, various linear classifiers can be
 
 The scripts can be run without additional parameters and print the obtained accuracies from cross-validation for each choice of hyperparameters in the terminal.
 
+Runtime is around 20 minutes for the SGD classifiers, and around 3 hours for LinearSVC.
