@@ -22,10 +22,16 @@ This script generates the best predictions submited on Kaggle, using Fasttext on
 
 ### Other Approaches:
 
-### `preprocessing.py`
+### Preprocessing
+`scraping.py`: Scrape text data from various online sources <br>
+`initial_dict.py`: Compound text data into single dictionary <br>
+`preprocessing_final.py`: Contains all the functions to tokenize, check, filter and correct the tweets. <br>
+`stop_words.py`: Remove common stop words from the final dictionary and tweets (optional)
 
-Contains all the functions to clean, split, standardize and predict the missing values in the datasets
-
+How to run:
+1) run `scraping.py`
+2) run `initial_dict.py`
+3) run `preprocessing_final.py train_pos_full.txt train_neg_full.txt test.txt`
 
 ### `implementation.py`
 
