@@ -13,14 +13,22 @@ import time
 import csv
 
 def check(tweet_list_tokens):
-	'''replace empty tweets with empty'''
+	'''
+	replace empty tweets with empty
+	:param tweet_list_tokens: list of tokens lists, list of tokenized tweets
+	:return: list of list of tokens lists
+	'''
 	return [t if t != [] else ['empty'] for t in tweet_list_tokens]
 
-def del_stopWords(tweet_list_tokens, stop_words):
-	'''remove stopwords from tokens list'''
-	return [[t for t in tokens if t not in stop_words] for tokens in tweet_list_tokens]
-
-def tweet2vector(tweet_tokens, model, tf_idf_dic):
+def tweet2vector(tweet_tokens, model, tf_idf_dic = None):
+	'''
+	compute a vector representation of a tweet based on the average word2vec embeddings of each token if 
+	tf_idf_dic is None, otherwise using tf_idf weights
+	:param tweet_tokens: list of tokens, tokenized tweet
+	:param model: word2vec model
+	:param tf_idf_dic: dic, tf_idf scores of each word
+	:return: array, vector representation of tweet
+	'''
 	default = np.zeros_like(model['happy'])
 	if len(tweet_tokens)==0: return default
 	if tf_idf_dic != None:
@@ -53,11 +61,13 @@ def main():
 	if not load:
 		#Generate word2vec model
 		print('Generating word2vec model ...')
-		model = gensim.models.Word2Vec(pos + neg + test, size=200, window=6, min_count=1, workers=4)
+		size = 150
+		window = 3
+		model = gensim.models.Word2Vec(pos + neg + test, size=size, window=window, min_count=1, workers=4)
 
 		#Store w2v model
 		print('Storing word2vec model ...')
-		pickle.dump(model, open('word2vec_model.p', 'wb'))
+		pickle.dump(model, open('word2vec_model_ s{}_w{}.p'.format(size, window), 'wb'))
 
 		'''
 		#Calculate tf-idf scores
@@ -73,7 +83,8 @@ def main():
 		pickle.dump(tf_idf_dict, open('tf_idf.p', 'wb'))
 		'''
 	else:
-		model = pickle.load(open('word2vec_model.p', 'rb'))
+		model_path = 'word2vec_model.p'
+		model = pickle.load(open(model_path, 'rb'))
 
 	tf_idf_dict = None
 
@@ -90,11 +101,12 @@ def main():
 
 	#Separate data to train and test
 	print('train test split ...')
-	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.05, random_state=0)
+	test_size = 0.05
+	X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=0)
 
 	#Store final data
 	print('Storing final data ...')
-	pickle.dump([X_train, X_test, y_train, y_test, test_vec], open('../../data/embeddings/word2vec/train_test_splited_word2Vec0.05.p', 'wb'))
+	pickle.dump([X_train, X_test, y_train, y_test, test_vec], open('../../data/embeddings/word2vec/train_test_splited_word2Vec_ s{}_w{}_tests{}.p'.format(size, window, test_size), 'wb'))
 
 	print('Done')
 

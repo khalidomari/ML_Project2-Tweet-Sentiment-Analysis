@@ -11,11 +11,21 @@ import pickle
 ########################## FUNCTIONS ##########################
 ###############################################################
 def tokenize(text):
+	'''
+	Tokenize string using nltk tweet tokenizer
+	param text: string
+	return: list of tokens
+	'''
 	tknzr = TweetTokenizer()
 	return tknzr.tokenize(text)
 
 def correct(sentence, contrac_dict={}):
-	'replace contractions in sentence and remove punctuation'
+	'''
+	replace contractions in sentence and remove punctuation
+	param sentence: string
+	param contrac_dict: dictionary, english contraction
+	return string, corrected sentece
+	'''
 	tokens = tokenize(sentence)
 	new_tokens = []
 	for token in tokens:
@@ -51,9 +61,11 @@ def main():
 	acronyms = np.asarray([line.rstrip('\n').lower() for line in open(BASE+'netlingo_acronyms.txt')])
 	idx = np.arange(int(len(acronyms)/2))
 	acronyms_dict = dict(zip(acronyms[2*idx], acronyms[2*idx+1]))
+
 	#Remove multi explications
 	for key in acronyms_dict:
 		acronyms_dict[key] = acronyms_dict[key].split('/ ')[0]
+  	
   	#correct descriptions
 	for key in acronyms_dict:
 		acronyms_dict[key] = correct(acronyms_dict[key])
@@ -62,6 +74,7 @@ def main():
 	smileys = np.asarray([line.rstrip('\n').lower() for line in open(BASE+'netlingo_smileys.txt')])
 	idx = np.arange(int(len(smileys)/2))
 	smileys_dict = dict(zip(smileys[2*idx], smileys[2*idx+1]))
+	
 	#Remove multi explications
 	for key in smileys_dict:
 		smileys_dict[key] = smileys_dict[key].split('- ')[0]

@@ -44,12 +44,13 @@ def main():
 	print('Loading files .... ')
 	DATA_PATH = '../data/embeddings/'
 	GLOVE    = DATA_PATH + 'glove/train_test_splited_glove_data.200d.p'
-	WORD2VEC = DATA_PATH + 'word2vec/train_test_splited_word2Vec0.05.p'
+	#WORD2VEC = DATA_PATH + 'word2vec/train_test_splited_word2Vec0.05.p'
+	WORD2VEC = DATA_PATH + 'word2vec/train_test_splited_word2Vec_ s150_w3_tests0.05.p'
 
 	EMBD = 'WORD2VEC'
 	[X_train, X_test, y_train, y_test, test_vec] = pickle.load( open(WORD2VEC, 'rb'))
 
-	size = 100000
+	size = -1
 	X_train = X_train[:size]
 	y = y_train[:size]
 
@@ -69,7 +70,10 @@ def main():
 	#mlp = MLPClassifier(hidden_layer_sizes=(200,200), verbose=True)
 	#mlp = LinearSVC(random_state=0, verbose=1)
 	#mlp = MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True)
-	mlp = MLPClassifier(hidden_layer_sizes=(30,30,30), verbose=True)
+	mlp = MLPClassifier(hidden_layer_sizes=(100,100,100), verbose=True, random_state=1, shuffle =True, early_stopping =True, solver='adam')
+	
+
+
 	#mlp = LogisticRegression(verbose=1)
 	print('model fitting ...')
 	mlp.fit(X,y)

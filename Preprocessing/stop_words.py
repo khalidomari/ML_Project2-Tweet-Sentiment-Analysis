@@ -12,6 +12,12 @@ from collections import Counter
 ########################## FUNCTIONS ##########################
 ###############################################################
 def count_word(word, c_pos, c_neg):
+	'''
+	counts the occurence of a given word in two counter respectively
+	:param c_pos: counter, positive counter
+	:param c_neg: counter, negative counter
+	:return: int, int
+	'''
 	count_pos = 0
 	count_neg = 0
 	if word in c_pos:
@@ -21,7 +27,13 @@ def count_word(word, c_pos, c_neg):
 	return count_pos, count_neg
 
 def remove_stopwords(tweet_list_tokens, stopwords, unique=True):
-	'''Remove stopwords and remove repeated tweets'''
+	'''
+	Remove stopwords and remove repeated tweets
+	param tweet_list_tokens: list of tokens lists, list of tokenized tweets
+	param stopwords: list of strings, stopwords
+	param unique: bool
+	return: list of tokens lists, without stopwords, and without repeated items if unique
+	'''
 	new_list = []
 	for tweet_tokens in tweet_list_tokens:
 		words = [word for word in tweet_tokens if not word in stopwords]
@@ -74,7 +86,7 @@ def main():
 	print('removing stopwords ...')
 	new_data = [remove_stopwords(pos, del_stopwords), remove_stopwords(neg, del_stopwords), remove_stopwords(test, del_stopwords, unique=False)]
 
-	# Save processed tweets
+	# Store processed tweets
 	print('storing data ...')
 	BASE = '../data/corrected_data/'
 	pickle.dump(new_data, open( BASE + "corrected_datasets_stopwords_pos_neg_test.p", "wb" ))
