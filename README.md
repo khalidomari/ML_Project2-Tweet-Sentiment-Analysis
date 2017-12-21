@@ -3,102 +3,50 @@ Project 2 for the Machine Learning Course (Fall 2017)
 
 ## Project description
 
-The task of this competition is to predict if a tweet message used to contain a positive :) or negative :( smiley, by considering only the remaining text.
+The goal of this project is to predict whether a tweet message used to contain a positive smiley ’:)’ or a positive smiley ’:(’ by considering only the remaining text of the tweet. The topic of twitter emotion classification is of great interest in market research, where e.g. a company would like to evaluate customer reaction to a new line of products. The task can be split into two parts.
+First, a suitable feature representation of the input text must be found. Multiple approaches for this exist in the literature, and various toolboxes are available for this task. Second, based on this representation a text classifier must be trained.
+The aim is to minimize the missclassification error score of the classifier.
+### Required libraries
+NLTK - http://www.nltk.org/ <br>
+WordSegment - https://pypi.python.org/pypi/wordsegment <br>
+gensim - https://radimrehurek.com/gensim/ <br>
+Fasttext - https://pypi.python.org/pypi/fasttext
 
-### Prerequisites
+### `run.py` [Fasttext]
 
-What things you need to install the software and how to install them
+This script generates the best predictions submited on Kaggle, using Fasttext on the original datasets:
+`train_neg.txt`, `train_pos.txt` and `test_data.txt` should be in the `data` folder
+- Preprocess the data (Fasttext)
+- Generates model
+- Generates and saves prediction
 
-```
-nltk
-```
-```
-Give examples
-```
+### Other Approaches:
 
-### Preprocessing
+### `preprocessing.py`
 
-A file is preprocessed using ```preprocessing.py```: it performs the following cleanings:
-<details>
-  <h3>Replace negative verbs</h3>
-  <h3>Replace smiley and slangs</h3>
-  <h3>Remove punctuation</h3>
-  <h3>Segmentation</h3>
-  <h3>correct char repetiotions</h3>
-  <h3>correct char repetiotions</h3>
-</details>
-```
-python preprocessing.py file1 file2 ....
-```
+Contains all the functions to clean, split, standardize and predict the missing values in the datasets
 
-### Installing
 
-A step by step series of examples that tell you have to get a development env running
+### `implementation.py`
 
-Say what the step will be
+This script contains the required machine learning algorithms for this project:
+- Least Squares (normal equations, GD, SGD)
+- Ridge Regression
+- Logistic Regression
+- Regularized Logistic Regression
+As well as some helper functions for the machine learning algorithms compute_sigmoid and so on ...
 
-```
-Give the example
-```
+### `cross_validation.py`
 
-And repeat
+Contains the cross_validation function to perform cross validation on the training set in order to find the best hyperparameters and compare models.
 
-```
-until finished
-```
 
-End with an example of getting some data out of the system or using it for a little demo
+### `proj1_helpers.py`
 
-## Running the tests
+Contains helpers functions to load the dataset, predict labels and create submission as csv file.
 
-Explain how to run the automated tests for this system
 
-### Break down into end to end tests
+## Generate predictions
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+Make sure the train.csv and test.csv (should be downloaded from https://www.kaggle.com/c/epfml-higgs/data) are in the data folder, and all py files are in scripts folder, then run 'run.py' by executing the command:
+    `python run.py`
