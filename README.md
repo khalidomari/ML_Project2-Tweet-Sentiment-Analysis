@@ -40,6 +40,7 @@ How to run:
 The resulting files are pickled and saved in the folder: `/data/embeddings`
 
 ### Linear Classification
+After the word embeddings have been generated, various linear classifiers can be evaluated.
 `Train_SGDClassifiers.py`: Train linear hinge, modified huber and logistic regression loss classifiers using stochastic gradient descent. Hyperparameters are evaluated using grid search.
 `Train_linearsvc.py`: Train a linear SVC classifier using LinearSVC. Hyperparameters are evaluated using grid search.
 
