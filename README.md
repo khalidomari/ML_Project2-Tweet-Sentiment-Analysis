@@ -31,28 +31,17 @@ This script generates the best predictions submited on Kaggle, using Fasttext on
 How to run:
 1) run `scraping.py`
 2) run `initial_dict.py`
-3) run `preprocessing_final.py train_pos_full.txt train_neg_full.txt test.txt`
+3) run `preprocessing_final.py train_pos.txt train_neg.txt test.txt`
 
-### `implementation.py`
+### Word Embeddings
+`word2vec.py`: Generates a Word2vec model using the preprocessed tweets. The result is a vector representation of each tweet. <br> 
+`glove_emb.py`: Generate a vector representation of each tweet based on a pre-trained GloVe model.
 
-This script contains the required machine learning algorithms for this project:
-- Least Squares (normal equations, GD, SGD)
-- Ridge Regression
-- Logistic Regression
-- Regularized Logistic Regression
-As well as some helper functions for the machine learning algorithms compute_sigmoid and so on ...
+The resulting files are pickled and saved in the folder: `/data/embeddings`
 
-### `cross_validation.py`
+### Linear Classification
+`Train_SGDClassifiers.py`: Train linear hinge, modified huber and logistic regression loss classifiers using stochastic gradient descent. Hyperparameters are evaluated using grid search.
+`Train_linearsvc.py`: Train a linear SVC classifier using LinearSVC. Hyperparameters are evaluated using grid search.
 
-Contains the cross_validation function to perform cross validation on the training set in order to find the best hyperparameters and compare models.
+The scripts can be run without additional parameters and print the obtained accuracies from cross-validation for each choice of hyperparameters in the terminal.
 
-
-### `proj1_helpers.py`
-
-Contains helpers functions to load the dataset, predict labels and create submission as csv file.
-
-
-## Generate predictions
-
-Make sure the train.csv and test.csv (should be downloaded from https://www.kaggle.com/c/epfml-higgs/data) are in the data folder, and all py files are in scripts folder, then run 'run.py' by executing the command:
-    `python run.py`
